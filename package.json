@@ -4,17 +4,46 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "patch": "npm version patch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GerbenRampaart/dotenv-typed.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "dotenv",
+    "typescript"
+  ],
+  "author": "Gerben Rampaart",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GerbenRampaart/dotenv-typed/issues"
   },
-  "homepage": "https://github.com/GerbenRampaart/dotenv-typed#readme"
+  "homepage": "https://github.com/GerbenRampaart/dotenv-typed#readme",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.2",
+    "dotenv": "^8.2.0",
+    "jest": "^25.4.0",
+    "prettier": "^2.0.5",
+    "ts-jest": "^25.4.0",
+    "tslint": "^6.1.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.8.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
