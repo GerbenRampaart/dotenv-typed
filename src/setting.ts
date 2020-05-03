@@ -1,9 +1,9 @@
 export class Setting {
-  constructor(public name: string, public rawValue: any | undefined) {}
+  constructor(public name: string, public rawValue: string | undefined) {}
 
   asNumber(def: number | undefined = undefined): number {
     const v = this.rawValue;
-    const i = parseInt(v);
+    const i = parseInt(v || "");
 
     if (!isNaN(i)) {
       return i;
@@ -34,6 +34,8 @@ export class Setting {
 
     return this.defaultOrThrow(def, "Must be string.");
   }
+
+  regex()
 
   private defaultOrThrow = (def: any | undefined, msg: string) => {
     if (def !== undefined) {
