@@ -1,9 +1,9 @@
 export class Setting {
   constructor(public name: string, public rawValue: string | undefined) {}
 
-  asNumber(def: number | undefined = undefined): number {
+  asNumber(def: number | undefined): number {
     const v = this.rawValue;
-    const i = parseInt(v || "");
+    const i = parseInt(v || "", 10);
 
     if (!isNaN(i)) {
       return i;
@@ -12,7 +12,7 @@ export class Setting {
     return this.defaultOrThrow(def, "Must be number.");
   }
 
-  asBool(def: boolean | undefined = undefined): boolean {
+  asBool(def: boolean | undefined): boolean {
     let v = this.rawValue;
 
     // We can't rely on truthy and falsy here
@@ -25,8 +25,8 @@ export class Setting {
     return this.defaultOrThrow(def, "Must be boolean.");
   }
 
-  asString(def: string | undefined = undefined): string {
-    let v = this.rawValue;
+  asString(def: string | undefined): string {
+    const v = this.rawValue;
 
     if (v) {
       return v;
@@ -35,7 +35,10 @@ export class Setting {
     return this.defaultOrThrow(def, "Must be string.");
   }
 
-  regex()
+  regex(): Setting {
+
+    return this;
+  }
 
   private defaultOrThrow = (def: any | undefined, msg: string) => {
     if (def !== undefined) {

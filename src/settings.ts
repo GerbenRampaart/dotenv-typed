@@ -5,7 +5,7 @@ export class Settings {
   }
 
   get(name: string): Setting {
-    const s = this.settings.find((s: Setting) => s.name === name);
+    const s = this.settings.find((setting: Setting) => setting.name === name);
 
     if (s) {
       return s;
