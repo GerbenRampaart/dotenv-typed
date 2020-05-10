@@ -35,7 +35,17 @@ export class Setting {
     return this.defaultOrThrow(def, "Must be string.");
   }
 
+<<<<<<< HEAD
   regex(): Setting {
+=======
+  regex(pattern: string): Setting {
+    const expression = new RegExp(pattern);
+    const test = expression.test(this.asString(""));
+
+    if (!test) {
+      this.throw(`pattern ${pattern} did not match value`);
+    }
+>>>>>>> 2b38e927b8ac112bf1620859156dedc0ab5ab01c
 
     return this;
   }
@@ -44,6 +54,11 @@ export class Setting {
     if (def !== undefined) {
       return def;
     }
-    throw new Error(`process.env['${this.name}'] was '${this.rawValue}'. ${msg}`);
+
+    this.throw(msg);
   };
+
+  private throw = (msg: string) => {
+    throw new Error(`process.env['${this.name}'] was '${this.rawValue}'. ${msg}`);
+  }
 }
