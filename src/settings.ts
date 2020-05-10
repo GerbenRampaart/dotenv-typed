@@ -11,6 +11,14 @@ export class Settings {
       return s;
     }
 
-    return new Setting(name, undefined);
+    return new Setting(name, undefined, false);
+  }
+
+  get processEnvSettings(): Setting[] {
+    return this.settings.filter((s: Setting) => !s.fromDotenv);
+  }
+
+  get dotEnvSettings(): Setting[] {
+    return this.settings.filter((s: Setting) => s.fromDotenv);
   }
 }

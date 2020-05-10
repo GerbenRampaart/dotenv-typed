@@ -1,7 +1,7 @@
 export class Setting {
-  constructor(public name: string, public rawValue: string | undefined) {}
+  constructor(public name: string, public rawValue: string | undefined, public fromDotenv: boolean) {}
 
-  asNumber(def: number | undefined): number {
+  asNumber(def: number | undefined = undefined): number {
     const v = this.rawValue;
     const i = parseInt(v || "", 10);
 
@@ -12,7 +12,7 @@ export class Setting {
     return this.defaultOrThrow(def, "Must be number.");
   }
 
-  asBool(def: boolean | undefined): boolean {
+  asBool(def: boolean | undefined = undefined): boolean {
     let v = this.rawValue;
 
     // We can't rely on truthy and falsy here
@@ -25,7 +25,7 @@ export class Setting {
     return this.defaultOrThrow(def, "Must be boolean.");
   }
 
-  asString(def: string | undefined): string {
+  asString(def: string | undefined = undefined): string {
     const v = this.rawValue;
 
     if (v) {
@@ -35,17 +35,18 @@ export class Setting {
     return this.defaultOrThrow(def, "Must be string.");
   }
 
-<<<<<<< HEAD
-  regex(): Setting {
-=======
   regex(pattern: string): Setting {
+
+    if (this.rawValue === undefined) {
+      this.throw(`pattern ${pattern} did not match value`);
+    }
+
     const expression = new RegExp(pattern);
-    const test = expression.test(this.asString(""));
+    const test = expression.test(this.asString());
 
     if (!test) {
       this.throw(`pattern ${pattern} did not match value`);
     }
->>>>>>> 2b38e927b8ac112bf1620859156dedc0ab5ab01c
 
     return this;
   }
