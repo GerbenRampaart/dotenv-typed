@@ -29,12 +29,14 @@
     "url": "https://github.com/GerbenRampaart/dotenv-typed/issues"
   },
   "homepage": "https://github.com/GerbenRampaart/dotenv-typed#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.2",
     "@typescript-eslint/eslint-plugin": "^2.32.0",
     "@typescript-eslint/parser": "^2.32.0",
-    "dotenv": "^8.2.0",
     "eslint": "^7.0.0",
     "jest": "^25.4.0",
     "prettier": "^2.0.5",
