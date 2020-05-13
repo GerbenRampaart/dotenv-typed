@@ -39,5 +39,8 @@ Ok, a bit better, but now what when you want to use a healthy default, like 8080
 nodejs 8 or higher
 
 ## Initial setup
-The plumbing of this npm package was created using the guide created by Carl-Johan Kihl
-https://itnext.io/step-by-step-building-and-publishing-an-npm-typescript-package-44fe7164964c
+The plumbing of this npm package was created using the guide created by Carl-Johan Kihl:
+- https://itnext.io/step-by-step-building-and-publishing-an-npm-typescript-package-44fe7164964c
+
+However, ts-lint is getting obsolete, so we're using eslint:
+- https://khalilstemmler.com/blogs/typescript/eslint-for-typescript/

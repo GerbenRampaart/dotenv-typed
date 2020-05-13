@@ -8,7 +8,8 @@ describe("init tests", () => {
         const s = init({
             path: envPath
         });
-        expect(s.dotEnvSettings.length).toBeGreaterThan(0);
+
+        expect(s.dotEnvSettings.length).toBe(3);
     });
 
     test("Testing init WITHOUT .env available", () => {
@@ -49,8 +50,12 @@ describe("init tests", () => {
 
         expect(cfg.parsed).toBeDefined();
 
+        if (!cfg.parsed) {
+            throw new Error("parsed was null");
+        }
+
         // number of dotenv settings loaded by init() must be equal to the dotenv settings loaded by the dotenv package
-        const dotEnv = Object.keys(cfg.parsed!);
+        const dotEnv = Object.keys(cfg.parsed);
         expect(s.dotEnvSettings.length).toBe(dotEnv.length);
     });
 })

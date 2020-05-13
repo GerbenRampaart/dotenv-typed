@@ -1,7 +1,7 @@
 export class Setting {
   constructor(public name: string, public rawValue: string | undefined, public fromDotenv: boolean) {}
 
-  asNumber(def: number | undefined = undefined): number {
+  asNumber(def?: number): number {
     const v = this.rawValue;
     const i = parseInt(v || "", 10);
 
@@ -12,7 +12,7 @@ export class Setting {
     return this.defaultOrThrow(def, "Must be number.");
   }
 
-  asBool(def: boolean | undefined = undefined): boolean {
+  asBool(def?: boolean): boolean {
     let v = this.rawValue;
 
     // We can't rely on truthy and falsy here
@@ -25,7 +25,7 @@ export class Setting {
     return this.defaultOrThrow(def, "Must be boolean.");
   }
 
-  asString(def: string | undefined = undefined): string {
+  asString(def?: string): string {
     const v = this.rawValue;
 
     if (v) {
