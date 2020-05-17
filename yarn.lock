@@ -1224,6 +1224,13 @@ domexception@^1.0.1:
   dependencies:
     webidl-conversions "^4.0.2"
 
+dotenv-typed@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv-typed/-/dotenv-typed-1.0.0.tgz#5a8b7dafc24552e218ac8e6dab530a3495acaee0"
+  integrity sha512-6A2xEcneeth4MVZ+tjLdkISE8Gf8YtmPudjzKMDeUSd39ZW3eKgKYhgOvEdCw9HCIMTP+TEwtHz/wpfGu47a5g==
+  dependencies:
+    dotenv "^8.2.0"
+
 dotenv@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"

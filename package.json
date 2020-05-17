@@ -1,8 +1,8 @@
 {
   "name": "dotenv-typed",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
@@ -37,6 +37,7 @@
     "@types/node": "^13.13.2",
     "@typescript-eslint/eslint-plugin": "^2.32.0",
     "@typescript-eslint/parser": "^2.32.0",
+    "dotenv-typed": "^1.0.0",
     "eslint": "^7.0.0",
     "jest": "^25.4.0",
     "prettier": "^2.0.5",
