@@ -1,5 +1,6 @@
 export class Setting {
-  constructor(public name: string, public rawValue: string | undefined, public fromDotenv: boolean) {}
+  constructor(public name: string, public rawValue: string | undefined, public fromDotenv: boolean) {
+  }
 
   asNumber(def?: number): number {
     const v = this.rawValue;
@@ -8,8 +9,12 @@ export class Setting {
     if (!isNaN(i)) {
       return i;
     }
-    
-    return this.defaultOrThrow(def, "Must be number.");
+
+    if (!def) {
+      throw new Error(`${this.toString()}. Must be number`);
+    }
+
+    return def;
   }
 
   asBool(def?: boolean): boolean {
@@ -21,8 +26,12 @@ export class Setting {
     if (v === "true" || v === "false") {
       return v === "true" ? true : false;
     }
-    
-    return this.defaultOrThrow(def, "Must be boolean.");
+
+    if (!def) {
+      throw new Error(`${this.toString()}. Must be boolean`);
+    }
+
+    return def;
   }
 
   asString(def?: string): string {
@@ -32,34 +41,36 @@ export class Setting {
       return v;
     }
 
-    return this.defaultOrThrow(def, "Must be string.");
-  }
-
-  regex(pattern: string): Setting {
-
-    if (this.rawValue === undefined) {
-      this.throw(`pattern ${pattern} did not match value`);
+    if (!def) {
+      throw new Error(`${this.toString()}. Must be string`);
     }
 
-    const expression = new RegExp(pattern);
-    const test = expression.test(this.asString());
+    return def;
+  }
+
+  regex(pattern: RegExp): Setting {
+    const errString = `${this.toString()}. Pattern ${pattern} did not match value`;
+
+    if (this.rawValue === undefined) {
+      throw new Error(errString);
+    }
+
+    const test = pattern.test(this.asString());
 
     if (!test) {
-      this.throw(`pattern ${pattern} did not match value`);
+      throw new Error(errString);
     }
 
     return this;
   }
 
-  private defaultOrThrow = (def: any | undefined, msg: string) => {
-    if (def !== undefined) {
-      return def;
-    }
-
-    this.throw(msg);
-  };
-
-  private throw = (msg: string) => {
-    throw new Error(`process.env['${this.name}'] was '${this.rawValue}'. ${msg}`);
+  toString = (): string => {
+    return `${this.name} => ${this.rawValue}`;
   }
 }
+
+
+
+
+
+

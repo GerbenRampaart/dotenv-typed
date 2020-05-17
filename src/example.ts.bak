@@ -1,0 +1,18 @@
+import { init } from "dotenv-typed";
+
+const s = init(/* DotenvConfigOptions here if you want */);
+
+export const environment = {
+
+  // If PORT is not defined in .env or process.env or is not a number, this value will default to 8080 
+  port: s.get("PORT").asNumber(8080),
+
+  // If VERBOSE_LOGGING is not defined in .env or process.env or is not a boolean, this value will default to false
+  verboseLogging: s.get("VERBOSE_LOGGING").asBool(false),
+
+  // If SOME_TOKEN is not defined in .env or process.env, an exception is thrown
+  someToken: s.get("SOME_TOKEN").asString(),
+
+  // If ADMIN_EMAIL is either not available OR does not match the regular expression, an exception is thrown
+  adminEmail: s.get("ADMIN_EMAIL").regex(/^[^@\s]+@[^@\s\.]+\.[^@\.\s]+$/).asString()
+}

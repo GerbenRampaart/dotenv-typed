@@ -8,8 +8,8 @@ export const init = (options?: DotenvConfigOptions): Settings => {
   const parsed = dotenvParsedSettings.parsed;
 
   const dotenvSettings: {
-    name: string,
-    value: string
+    name: string;
+    value: string;
   }[] = [];
 
   if (parsed) {
