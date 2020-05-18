@@ -34,7 +34,7 @@ export interface Environment {
 }
 ```
 
-Ok, a bit better, but now what when you want to use a healthy default, like 8080 for PORT is it's not available. Or what when PORT is available but it does not contain a number? That's where dotenv-typed comes in.
+Ok, a bit better, but now what when you want to use a healthy default, like 8080 for PORT is it's not available. Or what when process.env.PORT is available but it does not contain a number? That's where dotenv-typed comes in.
 
 # But now with dotenv-typed !!
 With dotenv-typed you just have a typescript file (I tend to call it environment.ts) that types the settings you expect at runtime. These settings can come from a .env or just from process.env.
