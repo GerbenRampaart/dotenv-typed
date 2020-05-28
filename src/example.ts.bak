@@ -1,4 +1,5 @@
-import { init } from "dotenv-typed";
+import { init } from "./init";
+import { Setting } from "./setting";
 
 const s = init(/* DotenvConfigOptions here if you want */);
 
@@ -16,3 +17,20 @@ export const environment = {
   // If ADMIN_EMAIL is either not available OR does not match the regular expression, an exception is thrown
   adminEmail: s.get("ADMIN_EMAIL").regex(/^[^@\s]+@[^@\s\.]+\.[^@\.\s]+$/).asString()
 }
+
+// These are all the settings which came from your .env
+// If you're not loading a .env because the file isn't there this collection will be empty.
+s.dotEnvSettings.forEach((s: Setting) => {
+  console.log(s.name);
+});
+
+// These are all the settings which came from your process.env
+// This does NOT include the settings from .env
+s.processEnvSettings.forEach((s: Setting) => {
+  console.log(s.name);
+});
+
+// These are all settings combined.
+s.settings.forEach((s: Setting) => {
+  console.log(s.name);
+});

@@ -18,6 +18,7 @@ export class Settings {
     return this.settings.filter((s: Setting) => !s.fromDotenv);
   }
 
+  
   get dotEnvSettings(): Setting[] {
     return this.settings.filter((s: Setting) => s.fromDotenv);
   }
