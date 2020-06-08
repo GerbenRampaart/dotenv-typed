@@ -1,4 +1,4 @@
-import { init } from "../../../init";
+import { init } from "../../../index";
 import { join } from "path";
 import { Settings } from "../../../settings";
 
@@ -19,7 +19,7 @@ describe("asNumber tests", () => {
     expect(val).toBe(24680);
   });
 
-  test.only("Should be my number as default because weird", () => {
+  test("Should be my number as default because weird", () => {
     const val = s.get("MY_NUMBER_WEIRD").asNumber(24680);
     expect(val).toBe(24680);
   });

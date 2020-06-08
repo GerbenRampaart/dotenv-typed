@@ -1,4 +1,4 @@
-import { init } from "../../init";
+import { init, config as c } from "../../index";
 import { join } from "path";
 import { config } from "dotenv";
 
@@ -11,6 +11,17 @@ describe("init tests", () => {
 
         expect(s.dotEnvSettings.length).toBe(3);
     });
+
+    // 'config' now also works. one test is enough to verify.
+    test("Testing config WITH .env available", () => {
+        const envPath = join(__dirname, ".env");
+        const s = c({
+            path: envPath
+        });
+
+        expect(s.dotEnvSettings.length).toBe(3);
+    });
+
 
     test("Testing init WITHOUT .env available", () => {
         const envPath = join(__dirname, ".env.doesnotexist");

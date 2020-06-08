@@ -2,6 +2,10 @@ export class Setting {
   constructor(public name: string, public rawValue: string | undefined, public fromDotenv: boolean) {
   }
 
+  get nameLower(): string {
+    return this.name.toLowerCase();
+  }
+
   asNumber(def?: number): number {
     const v = this.rawValue;
     const i = parseInt(v || "", 10);

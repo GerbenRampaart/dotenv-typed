@@ -73,11 +73,23 @@ In other words:
 ```typescript
   // This will default to 8080 when PORT is not available OR not parsable to a number.
   // You use this when the setting is optional.
-  port: s.get("PORT").asNumber(8080) 
+  port: s.get("PORT").asNumber(8080);
 
   // This will throw an exception when PORT is not available OR not parsable to a number.
   // You use this when you want the startup of your app to fail when the setting is not there.
-  port: s.get("PORT").asNumber() 
+  port: s.get("PORT").asNumber();
+```
+
+By default, the settings are case-insensitive, but if you want, you can disable this.
+
+```typescript
+
+  // This will match 'some_setting' in process.env too
+  someSetting: s.get("SOME_SETTING").asString(); 
+
+  // This will throw an exception, even when 'some_setting' is available in process.env
+  // It must match the case exactly.
+  someSetting: s.get("SOME_SETTING", false).asString(); 
 ```
 
 ### You want some extra logging?

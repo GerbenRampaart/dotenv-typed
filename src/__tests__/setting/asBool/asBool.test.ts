@@ -1,4 +1,4 @@
-import { init } from "../../../init";
+import { init } from "../../../index";
 import { join } from "path";
 import { Settings } from "../../../settings";
 
@@ -19,7 +19,7 @@ describe("asBool tests", () => {
     expect(val).toBe(false);
   });
 
-  test("Should be true as default because empty", () => {
+  test("Should be default because empty", () => {
     const val = s.get("MY_BOOL_NOT_EXISTING").asBool(true);
     expect(val).toBe(true);
   });

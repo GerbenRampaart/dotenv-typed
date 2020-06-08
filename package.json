@@ -1,7 +1,7 @@
 {
   "name": "dotenv-typed",
   "version": "1.1.0",
-  "description": "",
+  "description": "A module for easy typing and checking your process.env",
   "main": "lib/index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
@@ -21,6 +21,7 @@
   },
   "keywords": [
     "dotenv",
+    "process.env",
     "typescript"
   ],
   "author": "Gerben Rampaart",

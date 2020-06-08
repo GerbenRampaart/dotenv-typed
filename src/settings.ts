@@ -4,8 +4,12 @@ export class Settings {
   constructor(public settings: Setting[]) {
   }
 
-  get(name: string): Setting {
-    const s = this.settings.find((setting: Setting) => setting.name === name);
+  get(name: string, ignoreCase = true): Setting {
+    const targetName = ignoreCase ? name.toLowerCase() : name;
+    const s = this.settings.find((setting: Setting) => {
+      const settingName = ignoreCase ? setting.nameLower : setting.name;
+      return settingName === targetName;
+    });
 
     if (s) {
       return s;

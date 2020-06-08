@@ -1,26 +1,28 @@
-import { init } from "../../../init";
+import { init } from "../../../index";
 import { join } from "path";
 import { Settings } from "../../../settings";
 
-describe("asNumber tests", () => {
+describe("asString tests", () => {
 
-  const envPath = join(__dirname, ".env.asNumber");
+  const envPath = join(__dirname, ".env.asString");
   const s: Settings = init({
     path: envPath
   });
 
-  test("Should be my number", () => {
-    const val = s.get("MY_NUMBER").asNumber();
-    expect(val).toBe(12345);
+  test("Should be my value", () => {
+    const val = s.get("MY_STRING").asString();
+    expect(val).toBe("something something darkside");
   });
 
-  test("Should be my number as default because empty", () => {
-    const val = s.get("MY_NUMBER_NOT_EXISTING").asNumber(24680);
-    expect(val).toBe(24680);
+  test("Should be default because empty", () => {
+    const def = "my default string";
+    const val = s.get("MY_STRING_NOT_EXISTING").asString(def);
+    expect(val).toBe(def);
   });
 
-  test.only("Should be my number as default because weird", () => {
-    const val = s.get("MY_NUMBER_WEIRD").asNumber(24680);
-    expect(val).toBe(24680);
+  test("Should throw error", () => {
+    expect(() => {
+      s.get("MY_STRING_NOT_EXISTING").asString();
+    }).toThrow();
   });
 });
