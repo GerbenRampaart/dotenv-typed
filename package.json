@@ -1,6 +1,6 @@
 {
   "name": "dotenv-typed",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A module for easy typing and checking your process.env",
   "main": "lib/index.js",
   "scripts": {
@@ -13,7 +13,8 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "patch": "npm version patch"
+    "patch": "npm version patch",
+    "ncu": "ncu -u"
   },
   "repository": {
     "type": "git",
@@ -34,15 +35,16 @@
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.2",
-    "@typescript-eslint/eslint-plugin": "^2.32.0",
-    "@typescript-eslint/parser": "^2.32.0",
-    "eslint": "^7.0.0",
-    "jest": "^25.4.0",
-    "prettier": "^2.0.5",
-    "ts-jest": "^25.4.0",
-    "typescript": "^3.8.3"
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.2",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "eslint": "^7.10.0",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3",
+    "npm-check-updates": "^9.0.3"
   },
   "engines": {
     "node": ">=8.0.0"

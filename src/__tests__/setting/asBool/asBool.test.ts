@@ -28,4 +28,9 @@ describe("asBool tests", () => {
     const val = s.get("MY_BOOL_WEIRD").asBool(true);
     expect(val).toBe(true);
   });
+
+  test("Should be true as default because weird", () => {
+    const val = s.get("MY_BOOL_WEIRD").asBool(false);
+    expect(val).toBe(false);
+  });
 });

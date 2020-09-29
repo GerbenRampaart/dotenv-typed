@@ -14,7 +14,7 @@ export class Setting {
       return i;
     }
 
-    if (!def) {
+    if (def === undefined) {
       throw new Error(`${this.toString()}. Must be number`);
     }
 
@@ -31,7 +31,7 @@ export class Setting {
       return v === "true" ? true : false;
     }
 
-    if (!def) {
+    if (def === undefined) {
       throw new Error(`${this.toString()}. Must be boolean`);
     }
 
@@ -45,7 +45,7 @@ export class Setting {
       return v;
     }
 
-    if (!def) {
+    if (def === undefined) {
       throw new Error(`${this.toString()}. Must be string`);
     }
 
